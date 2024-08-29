@@ -1,0 +1,50 @@
+plugins {
+	id 'org.springframework.boot' version '3.1.0'   // Spring Boot version
+	id 'io.spring.dependency-management' version '1.1.0'
+	id 'java'  // Java plugin
+}
+
+group = 'com.GridFlow'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Boot dependencies
+	implementation 'org.springframework.boot:spring-boot-starter'  // Core Spring Boot starter
+	implementation 'org.springframework.boot:spring-boot-starter-web'  // For building web applications
+
+	// Apache Camel dependencies
+	implementation 'org.apache.camel.springboot:camel-spring-boot-starter:3.21.0'  // Camel Spring Boot starter
+	implementation 'org.apache.camel:camel-core:3.21.0'  // Core Camel library
+	implementation 'org.apache.camel:camel-kafka:3.21.0'  // Camel Kafka component for integration
+
+	// Optional: Lombok for reducing boilerplate code
+	compileOnly 'org.projectlombok:lombok'  // Lombok for annotations like @Data, @Getter, @Setter
+	annotationProcessor 'org.projectlombok:lombok'  // Required for Lombok's annotation processing
+
+	// Testing dependencies
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'  // Spring Boot testing starter
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'  // Set UTF-8 encoding for source files
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

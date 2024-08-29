@@ -1,0 +1,13 @@
+package com.GridFlow.GridFlow;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class GridFlowApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
