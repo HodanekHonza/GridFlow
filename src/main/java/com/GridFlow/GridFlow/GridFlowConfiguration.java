@@ -3,6 +3,7 @@ package com.GridFlow.GridFlow;
 
 import com.GridFlow.GridFlow.processing.processor.impl.LoggingProcessor;
 import com.GridFlow.GridFlow.processing.processor.impl.TransformProcessor;
+import com.GridFlow.GridFlow.receiver.processor.EnrichProcessor;
 import com.GridFlow.GridFlow.receiver.route.ReceiverRoute;
 import com.GridFlow.GridFlow.processing.route.ProcessingRoute;
 import com.GridFlow.GridFlow.sender.route.SenderRoute;
@@ -14,15 +15,16 @@ import org.springframework.context.annotation.Configuration;
 public class GridFlowConfiguration {
 
     @Bean
-    public ReceiverRoute receiverRoute(LoggingProcessor loggingProcessor) {
+    public ReceiverRoute receiverRoute(LoggingProcessor loggingProcessor, TransformProcessor transformProcessor) {
         return new ReceiverRoute()
-                .addProcessor(loggingProcessor);
+                .addProcessor(loggingProcessor)
+                .addProcessor(transformProcessor);
     }
 
     @Bean
-    public ProcessingRoute processingRoute(TransformProcessor transformProcessor) {
+    public ProcessingRoute processingRoute(EnrichProcessor enrichProcessor) {
         return new ProcessingRoute()
-                .addProcessor(transformProcessor);
+                .addProcessor(enrichProcessor);
     }
 
     @Bean

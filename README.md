@@ -1,3 +1,3 @@
 # GridFlow
 Energy data processing
-(UPDATES COMING SOON)
+objective now is to build out the pipeline and then its libraries after

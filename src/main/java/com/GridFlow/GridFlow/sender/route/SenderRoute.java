@@ -26,6 +26,6 @@ public class SenderRoute {
 
     private void sendToExternalSystem(Message message) {
         // Example implementation: print to console or send to an external system
-        System.out.println("Sending message: " + message);
+        System.out.println("Sending message: " + message.getBody());
     }
 }
