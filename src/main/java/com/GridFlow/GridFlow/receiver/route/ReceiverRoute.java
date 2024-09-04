@@ -4,12 +4,12 @@ package com.GridFlow.GridFlow.receiver.route;
 import com.GridFlow.GridFlow.processing.processor.Processor;
 import com.GridFlow.GridFlow.processing.route.ProcessingRoute;
 import com.GridFlow.GridFlow.receiver.api.dto.Message;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Service
 public class ReceiverRoute {
     private final List<Processor> processors = new ArrayList<>();
     private ProcessingRoute nextRoute;

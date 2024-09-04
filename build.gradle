@@ -18,23 +18,14 @@ repositories {
 }
 
 dependencies {
-	// Apache Camel dependencies
-	implementation 'org.apache.camel.springboot:camel-spring-boot-starter:3.19.0'
-	implementation 'org.apache.camel:camel-core:3.19.0'
-	implementation 'org.apache.camel:camel-file:3.19.0'
-	implementation 'org.apache.camel:camel-log:3.19.0'
-
 	// Spring Boot and Spring Integration dependencies
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-integration'
-	implementation 'org.springframework.integration:spring-integration-file' // Update to latest version
-	implementation 'org.springframework.integration:spring-integration-feed' // Update to latest version
 
 	// Test dependencies
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.integration:spring-integration-test' // Update to latest version
 
 	// Lombok for reducing boilerplate code
 	compileOnly 'org.projectlombok:lombok:1.18.24' // Use the latest version

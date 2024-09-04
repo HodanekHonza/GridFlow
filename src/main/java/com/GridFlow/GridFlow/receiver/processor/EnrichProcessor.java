@@ -2,9 +2,9 @@ package com.GridFlow.GridFlow.receiver.processor;
 
 import com.GridFlow.GridFlow.processing.processor.Processor;
 import com.GridFlow.GridFlow.receiver.api.dto.Message;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class EnrichProcessor implements Processor {
     @Override
     public void process(Message message) {
