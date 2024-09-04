@@ -1,7 +1,7 @@
 plugins {
-	id 'org.springframework.boot' version '3.1.0'   // Spring Boot version
+	id 'org.springframework.boot' version '3.1.0' // Spring Boot version
 	id 'io.spring.dependency-management' version '1.1.0'
-	id 'java'  // Java plugin
+	id 'java' // Java plugin
 }
 
 group = 'com.GridFlow'
@@ -13,36 +13,36 @@ java {
 	}
 }
 
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
-
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	// Spring Boot dependencies
-	implementation 'org.springframework.boot:spring-boot-starter'  // Core Spring Boot starter
-	implementation 'org.springframework.boot:spring-boot-starter-web'  // For building web applications
-
 	// Apache Camel dependencies
-	implementation 'org.apache.camel.springboot:camel-spring-boot-starter:3.21.0'  // Camel Spring Boot starter
-	implementation 'org.apache.camel:camel-core:3.21.0'  // Core Camel library
-	implementation 'org.apache.camel:camel-kafka:3.21.0'  // Camel Kafka component for integration
+	implementation 'org.apache.camel.springboot:camel-spring-boot-starter:3.19.0'
+	implementation 'org.apache.camel:camel-core:3.19.0'
+	implementation 'org.apache.camel:camel-file:3.19.0'
+	implementation 'org.apache.camel:camel-log:3.19.0'
 
-	// Optional: Lombok for reducing boilerplate code
-	compileOnly 'org.projectlombok:lombok'  // Lombok for annotations like @Data, @Getter, @Setter
-	annotationProcessor 'org.projectlombok:lombok'  // Required for Lombok's annotation processing
+	// Spring Boot and Spring Integration dependencies
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-integration'
+	implementation 'org.springframework.integration:spring-integration-file' // Update to latest version
+	implementation 'org.springframework.integration:spring-integration-feed' // Update to latest version
 
-	// Testing dependencies
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'  // Spring Boot testing starter
+	// Test dependencies
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.integration:spring-integration-test' // Update to latest version
+
+	// Lombok for reducing boilerplate code
+	compileOnly 'org.projectlombok:lombok:1.18.24' // Use the latest version
+	annotationProcessor 'org.projectlombok:lombok:1.18.24' // Use the latest version
 }
 
 tasks.withType(JavaCompile) {
-	options.encoding = 'UTF-8'  // Set UTF-8 encoding for source files
+	options.encoding = 'UTF-8' // Set UTF-8 encoding for source files
 }
 
 tasks.named('test') {

@@ -1,0 +1,11 @@
+route1:
+  processor:
+    logging:
+      enabled: true
+    transform:
+      enabled: true
+
+route2:
+  processor:
+    another:
+      enabled: false

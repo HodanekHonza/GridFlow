@@ -1,0 +1,23 @@
+{
+  "name": "gridflow",
+  "version": "1.0.0",
+  "description": "Energy data processing (UPDATES COMING SOON)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HodanekHonza/GridFlow.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HodanekHonza/GridFlow/issues"
+  },
+  "homepage": "https://github.com/HodanekHonza/GridFlow#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.10"
+  }
+}
