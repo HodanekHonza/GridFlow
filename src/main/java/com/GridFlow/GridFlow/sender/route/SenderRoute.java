@@ -1,29 +1,34 @@
 package com.GridFlow.GridFlow.sender.route;
 
+import com.GridFlow.GridFlow.receiver.route.Route;
 import com.GridFlow.GridFlow.processing.processor.Processor;
 import com.GridFlow.GridFlow.receiver.api.dto.Message;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class SenderRoute {
+public class SenderRoute implements Route {
     private final List<Processor> processors = new ArrayList<>();
+    private Route nextRoute;
 
+    @Override
     public SenderRoute addProcessor(Processor processor) {
         this.processors.add(processor);
         return this;
     }
 
+    @Override
+    public void setNextRoute(Route nextRoute) {
+        this.nextRoute = nextRoute;
+    }
+
+    @Override
     public void execute(Message message) {
         for (Processor processor : processors) {
             processor.process(message);
         }
-        sendToExternalSystem(message);
-    }
-
-    private void sendToExternalSystem(Message message) {
-        System.out.println("Sending message: " + message.getBody());
+        if (nextRoute != null) {
+            nextRoute.execute(message);
+        }
     }
 }

@@ -1,36 +1,47 @@
 package com.GridFlow.GridFlow;
 
-import com.GridFlow.GridFlow.processing.processor.impl.LoggingProcessor;
-import com.GridFlow.GridFlow.processing.processor.impl.TransformProcessor;
-import com.GridFlow.GridFlow.receiver.processor.EnrichProcessor;
 import com.GridFlow.GridFlow.receiver.route.ReceiverRoute;
 import com.GridFlow.GridFlow.processing.route.ProcessingRoute;
-import com.GridFlow.GridFlow.sender.processor.DataStoringProcessor;
+import com.GridFlow.GridFlow.receiver.route.RouteBuilder;
 import com.GridFlow.GridFlow.sender.route.SenderRoute;
 import com.GridFlow.GridFlow.receiver.api.ReceiverController;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class GridFlowConfiguration {
 
-    @Bean
-    public ReceiverRoute receiverRoute(LoggingProcessor loggingProcessor, TransformProcessor transformProcessor) {
-        return new ReceiverRoute()
-                .addProcessor(loggingProcessor)
-                .addProcessor(transformProcessor);
+    @Value("${receiver.processors.choosen}")
+    private String receiverProcessorsChoosen;
+
+    @Value("${processing.processors.choosen}")
+    private String processingProcessorsChoosen;
+
+    @Value("${sender.processors.choosen}")
+    private String senderProcessorsChoosen;
+
+    private final ProcessorRegistry processorRegistry;
+    private final RouteBuilder routeBuilder;
+
+    public GridFlowConfiguration(ProcessorRegistry processorRegistry, RouteBuilder routeBuilder) {
+        this.processorRegistry = processorRegistry;
+        this.routeBuilder = routeBuilder;
     }
 
     @Bean
-    public ProcessingRoute processingRoute(EnrichProcessor enrichProcessor) {
-        return new ProcessingRoute()
-                .addProcessor(enrichProcessor);
+    public ReceiverRoute receiverRoute() {
+        return routeBuilder.buildRoute(new ReceiverRoute(), receiverProcessorsChoosen);
     }
 
     @Bean
-    public SenderRoute senderRoute(DataStoringProcessor dataStoringProcessor) {
-        return new SenderRoute()
-                .addProcessor(dataStoringProcessor);
+    public ProcessingRoute processingRoute() {
+        return routeBuilder.buildRoute(new ProcessingRoute(), processingProcessorsChoosen);
+    }
+
+    @Bean
+    public SenderRoute senderRoute() {
+        return routeBuilder.buildRoute(new SenderRoute(), senderProcessorsChoosen);
     }
 
     @Bean
@@ -41,4 +52,3 @@ public class GridFlowConfiguration {
         return new ReceiverController(receiverRoute);
     }
 }
-
