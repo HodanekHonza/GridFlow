@@ -1,9 +1,9 @@
-package com.GridFlow.GridFlow.processing.processor.impl;
+package com.GridFlow.GridFlow.sender.processor;
 
 import com.GridFlow.GridFlow.processing.processor.Processor;
 import com.GridFlow.GridFlow.receiver.api.dto.Message;
 
-public class ValidationProcessor implements Processor {
+public class ArchivingProcessorSender implements Processor {
     @Override
     public void process(Message message) {
 
