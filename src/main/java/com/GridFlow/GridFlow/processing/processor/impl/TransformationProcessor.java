@@ -1,16 +1,16 @@
 package com.GridFlow.GridFlow.processing.processor.impl;
 
 import com.GridFlow.GridFlow.processing.processor.Processor;
-import com.GridFlow.GridFlow.processing.service.TransformService;
+import com.GridFlow.GridFlow.processing.service.TransformationService;
 import com.GridFlow.GridFlow.receiver.api.dto.Message;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TransformProcessor implements Processor {
+public class TransformationProcessor implements Processor {
 
-    private final TransformService transformService;
+    private final TransformationService transformService;
 
-    public TransformProcessor(TransformService transformService) {
+    public TransformationProcessor(TransformationService transformService) {
         this.transformService = transformService;
     }
 

@@ -6,11 +6,11 @@ import com.GridFlow.GridFlow.sender.service.DataStoringService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DataStoringProcessor implements Processor {
+public class DataStoringProcessorSender implements Processor {
 
     private final DataStoringService dataStoringService;
 
-    public DataStoringProcessor(DataStoringService dataStoringService) {
+    public DataStoringProcessorSender(DataStoringService dataStoringService) {
         this.dataStoringService = dataStoringService;
     }
 

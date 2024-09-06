@@ -4,7 +4,7 @@ import com.GridFlow.GridFlow.receiver.api.dto.Message;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TransformService {
+public class TransformationService {
     public void transform(Message message) {
         System.out.println("TRANSFORM SERVICE");
         String transformedBody = message.getBody().toUpperCase();

@@ -5,7 +5,7 @@ import com.GridFlow.GridFlow.receiver.api.dto.Message;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EnrichProcessor implements Processor {
+public class EnrichProcessorReceiver implements Processor {
     @Override
     public void process(Message message) {
         System.out.println("IN ENRICH PROCESSOR");

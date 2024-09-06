@@ -1,10 +1,10 @@
 package com.GridFlow.GridFlow;
 
 import com.GridFlow.GridFlow.processing.processor.Processor;
-import com.GridFlow.GridFlow.processing.processor.impl.LoggingProcessor;
-import com.GridFlow.GridFlow.processing.processor.impl.TransformProcessor;
-import com.GridFlow.GridFlow.receiver.processor.EnrichProcessor;
-import com.GridFlow.GridFlow.sender.processor.DataStoringProcessor;
+import com.GridFlow.GridFlow.processing.processor.impl.FilteringProcessor;
+import com.GridFlow.GridFlow.processing.processor.impl.TransformationProcessor;
+import com.GridFlow.GridFlow.receiver.processor.EnrichProcessorReceiver;
+import com.GridFlow.GridFlow.sender.processor.DataStoringProcessorSender;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -15,8 +15,8 @@ public class ProcessorRegistry {
 
     private final Map<String, Processor> processors = new HashMap<>();
 
-    public ProcessorRegistry(LoggingProcessor loggingProcessor, TransformProcessor transformProcessor,
-                             EnrichProcessor enrichProcessor, DataStoringProcessor dataStoringProcessor) {
+    public ProcessorRegistry(FilteringProcessor loggingProcessor, TransformationProcessor transformProcessor,
+                             EnrichProcessorReceiver enrichProcessor, DataStoringProcessorSender dataStoringProcessor) {
         processors.put("logging", loggingProcessor);
         processors.put("transform", transformProcessor);
         processors.put("enrich", enrichProcessor);
