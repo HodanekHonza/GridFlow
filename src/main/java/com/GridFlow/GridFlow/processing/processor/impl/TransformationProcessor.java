@@ -14,7 +14,6 @@ public class TransformationProcessor implements Processor {
         this.transformService = transformService;
     }
 
-
     @Override
     public void process(Message message) {
         transformService.transform(message);

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class TransformationService {
     public void transform(Message message) {
         System.out.println("TRANSFORM SERVICE");
-        String transformedBody = message.getBody().toUpperCase();
-        message.setBody(transformedBody);
+       // String transformedBody = message.getBody().toUpperCase();
+        //message.setBody(transformedBody);
     }
 }

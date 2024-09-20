@@ -1,6 +1,7 @@
 package com.GridFlow.GridFlow.receiver.route;
 
 import com.GridFlow.GridFlow.processing.processor.Processor;
+import com.GridFlow.GridFlow.receiver.api.dto.Context;
 import com.GridFlow.GridFlow.receiver.api.dto.Message;
 
 import java.util.ArrayList;
@@ -21,13 +22,17 @@ public class ReceiverRoute implements Route {
         this.nextRoute = nextRoute;
     }
 
-    @Override
     public void execute(Message message) {
+
+    }
+
+    @Override
+    public void execute(Message message, Context context) {
         for (Processor processor : processors) {
             processor.process(message);
         }
         if (nextRoute != null) {
-            nextRoute.execute(message);
+            nextRoute.execute(message, context);
         }
     }
 }
