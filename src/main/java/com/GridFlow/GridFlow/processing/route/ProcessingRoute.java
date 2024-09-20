@@ -1,5 +1,6 @@
 package com.GridFlow.GridFlow.processing.route;
 
+import com.GridFlow.GridFlow.receiver.api.dto.Context;
 import com.GridFlow.GridFlow.receiver.route.Route;
 import com.GridFlow.GridFlow.processing.processor.Processor;
 import com.GridFlow.GridFlow.receiver.api.dto.Message;
@@ -23,12 +24,17 @@ public class ProcessingRoute implements Route {
     }
 
     @Override
-    public void execute(Message message) {
+    public void execute(Message message, Context context) {
         for (Processor processor : processors) {
             processor.process(message);
         }
         if (nextRoute != null) {
             nextRoute.execute(message);
         }
+    }
+
+    @Override
+    public void execute(Message message) {
+
     }
 }
