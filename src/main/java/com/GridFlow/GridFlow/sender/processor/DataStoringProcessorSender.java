@@ -5,6 +5,7 @@ import com.GridFlow.GridFlow.receiver.api.dto.Message;
 import com.GridFlow.GridFlow.sender.service.DataStoringService;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class DataStoringProcessorSender implements Processor {
 
